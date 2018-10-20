@@ -2,8 +2,12 @@ package com.lopes.championship.resources;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,6 +24,11 @@ public class TeamsResource {
 	@GetMapping
 	public List<Team> listar() {
 		return this.teams.findAll();
+	}
+
+	@PostMapping
+	public Team inserir(@Valid @RequestBody Team team) {
+		return teams.save(team);
 	}
 
 }
